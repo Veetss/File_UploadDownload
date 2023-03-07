@@ -22,8 +22,12 @@ public class FileService {
         String newFileName = UUID.randomUUID().toString();
         String completeFileName = newFileName + "." + extension;
         File finalFolder = new File(fileFolder);
-        if(!finalFolder.exists()) throw new IOException("Final folder does not exists");
-        if(!finalFolder.isDirectory()) throw new IOException("Final folder is not a directory");
+        if(!finalFolder.exists()) {
+            throw new IOException("The folder does not exists :(");
+        }
+        if(!finalFolder.isDirectory()) {
+            throw new IOException("The folder is not a directory :(");
+        }
         File finalDestination = new File(fileFolder + "\\" + completeFileName);
         if(finalDestination.exists()){
             throw new IOException("File conflict");
@@ -35,7 +39,9 @@ public class FileService {
 
     public byte[] download(String fileName) throws IOException {
         File fileFromRepository = new File(fileFolder + "\\" + fileName);
-        if(!fileFromRepository.exists()) throw new IOException("File does not exists");
+        if(!fileFromRepository.exists()) {
+            throw new IOException("File does not exists");
+        }
         return IOUtils.toByteArray(new FileInputStream(fileFromRepository));
     }
 

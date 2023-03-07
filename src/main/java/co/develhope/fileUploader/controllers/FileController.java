@@ -25,12 +25,11 @@ public class FileController {
     @GetMapping("/download")
     public @ResponseBody byte[] download(@RequestParam String fileName, HttpServletResponse response) throws Exception{
         System.out.println("Downloading "  + fileName);
-        String extension = FilenameUtils.getExtension(fileName);
-        switch (extension){
+        String ex = FilenameUtils.getExtension(fileName);
+        switch (ex){
             case "gif":
                 response.setContentType(MediaType.IMAGE_GIF_VALUE);
                 break;
-            case "jpg":
             case "jpeg":
                 response.setContentType(MediaType.IMAGE_JPEG_VALUE);
                 break;
