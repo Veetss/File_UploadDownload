@@ -21,11 +21,11 @@ public class FileService {
         String extension = FilenameUtils.getExtension(file.getOriginalFilename());
         String newFileName = UUID.randomUUID().toString();
         String completeFileName = newFileName + "." + extension;
-        File finalFolder = new File(fileFolder);
-        if(!finalFolder.exists()) {
+        File folder = new File(fileFolder);
+        if(!folder.exists()) {
             throw new IOException("The folder does not exists :(");
         }
-        if(!finalFolder.isDirectory()) {
+        if(!folder.isDirectory()) {
             throw new IOException("The folder is not a directory :(");
         }
         File finalDestination = new File(fileFolder + "\\" + completeFileName);
